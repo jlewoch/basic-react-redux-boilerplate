@@ -1,7 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   entry: './src/index.js',
   mode: 'development',
@@ -50,14 +48,8 @@ module.exports = {
     hot: true,
     inline: true,
     compress: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    contentBase: './public'
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      title: 'React App',
-      template: './public/index.html'
-    }),
-    new webpack.HotModuleReplacementPlugin()
-  ]
+  plugins: [new webpack.HotModuleReplacementPlugin()]
 };
